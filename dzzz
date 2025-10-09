@@ -1,0 +1,58 @@
+  /*
+        Задание:
+        Выполните рефакторинг кода. Сделайте так, чтобы объекты создавались не через литералы, а через функцию конструктор.
+        */
+
+        let user1 = {
+            firstName: "Ivan",
+            lastName: "Ivanov",
+
+            show: function () {
+                console.log(this.firstName + " " + this.lastName);
+            }
+        }
+
+        let user2 = {
+            firstName: "Olga",
+            lastName: "Petrova",
+
+            show: function () {
+                console.log(this.firstName + " " + this.lastName);
+            }
+        }
+
+        user1.show();
+        user2.show();
+
+    function Name(user1, user2, firstname, lastname,){
+        user1 = {
+            firstname: "Ivan",
+            lastname: "Ivanonv"
+        }
+        user2 = {
+            firstname: "Olga",
+            lastname: "Petrova",
+        }
+        show: function Construct ()   {
+            console.log(this.firstName + " " + this.lastName);
+
+        }
+    }
+  Задание:
+        Выполните рефакторинг кода. Замените фабричный метод createUser на функцию конструктор.
+        */
+
+        function createUser(login, email) {
+          this.login = login;
+          this.email = email;
+
+          this.showContactInfo = function () {
+            console.log("Мой логин " + this.login + ", мой email " + this.email);
+        };
+    }
+
+        let user1 = new User("admin", "admin@example.com");
+        let user2 = new User("user", "user@example.com");
+
+        user1.showContactInfo();
+        user2.showContactInfo();
