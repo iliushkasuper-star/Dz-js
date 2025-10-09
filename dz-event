@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 01</title>
+</head>
+
+<body>
+    <button id="testBtn">Test Button</button>
+    <script>
+        /*
+        Задание:
+        Добавьте для кнопки testBtn обработчик на событие click.
+        Обработчик должен выводить на экран сообщение Hello world.
+        Добавьте обработчик тремя разными способами.
+        */
+       btn = document.getElementById("testBtn");
+       btn.addEventListener("click", function(){
+        alert("Кнопка нажата");
+       })
+    </script>
+  <label>Радиус (r):</label>
+  <input type="number" id="radius" placeholder="Enter radius">
+
+  <label>Высота (h):</label>
+  <input type="number" id="height" placeholder="Enter height"><br><br>
+
+  <button id="calculateBtn">Вычислить объем</button>
+
+  <h3 id="result"></h3>
+  <script>
+     const p = 3.14;
+
+    let  btn = document.getElementById("calculateBtn");
+    let  radiusInput = document.getElementById("radius");
+    let  heightInput = document.getElementById("height");
+    let  result = document.getElementById("result");
+
+    btn.addEventListener("click", () => {
+      const r = parseFloat(radiusInput.value);
+      const h = parseFloat(heightInput.value)
+   
+    V = p * r * r * h; 
+    result.textContent = `V: ${V}`;
+});
+  </script>
+</body>
+
+</html>
