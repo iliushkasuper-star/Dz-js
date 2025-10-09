@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 01</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Задание:
+        Перепишите данный код на использование классов вместо функций-конструкторов.
+        */
+        class Car {
+            #model = " ";
+
+            #year = 0;
+
+
+
+           constructor (year, model) {
+                this.#year = year;
+                this.#model = model;
+            }
+            get year(){
+                return this.#year;
+            }
+            get model(){
+                return this.#model;
+            }
+            set model(name){
+                this.#model = name;
+            }
+            set year(year){
+                this.#year = year;
+            }
+            
+            showInfo(){
+                console.log(`model: ${this.#model} | year: ${this.year} `)
+            }
+        };
+
+       
+        let car1 = new Car("Audi", 2015);
+        car1.showInfo();
+    </script>
+
+<script>
+        /*
+        Задание:
+        Определите класс цилиндр, который будет объектным представлением геометрического тела.
+        Класс должен содержать конструктор.
+        Конструктор должен принимать два параметра высота и радиус и инициализировать соответствующие свойства.
+        В классе должен быть определен метод getVolume, который должен возвращать значение объема данного цилиндра.
+        Создайте два экземпляра данного класса, передав произвольные значения в качестве параметров конструктора и выведите
+        на консоль значения объема двух экземпляров.
+        
+        */
+       class Cilindre{
+        #height = 0;
+        #radius = 0;
+        constructor(height,radius){
+            this.#height = height;
+            this.#radius = radius;
+        }
+        get height(){
+            return this.#height;
+        }
+        get radius(){
+            return this.#radius;
+        }
+        set height(height){
+            this.#height = height;
+        }
+        set radius(radius){
+            this.#radius = radius;
+        }
+        
+
+       }
+       Cilindre.obj1()
+       Cilindre.obj2()
+    </script>
+</body>
+
+</html>
