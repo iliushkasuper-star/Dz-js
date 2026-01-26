@@ -1,0 +1,33 @@
+  <button id="button1">Запрос</button>
+<div id="output"></div>
+
+
+
+<script>
+let button1 = document.querySelector("#button1");
+let output = document.querySelector("#output");
+let url = "https://jsonplaceholder.typicode.com/todos/100000"; 
+
+button1.addEventListener("click", function () {
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                output.innerHTML = "Ошибка сервера: " + response.status;
+            }
+        })
+        .then(json => {
+            if (json) {
+                output.innerHTML = "";
+                output.innerHTML += "<br>id: " + json.id;
+                output.innerHTML += "<br>user id: " + json.userId;
+                output.innerHTML += "<br>title: " + json.title;
+                output.innerHTML += "<br>completed: " + json.completed;
+            }
+        })
+        .catch(() => {
+            output.innerHTML = "Сетевая ошибка (нет интернета или CORS)";
+        });
+});
+</script>
