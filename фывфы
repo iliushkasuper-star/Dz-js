@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Employee {
+public:
+    virtual ~Employee() {}
+
+    virtual double getSalary() const = 0;
+    virtual string getPosition() const = 0;
+};
+
+class Manager : public Employee {
+public:
+    double getSalary() const override {
+        return 5000.0;
+    }
+    string getPosition() const override {
+        return "Manager";
+    }
+};
+
+class Developer : public Employee {
+public:
+    double getSalary() const override {
+        return 7000.0;
+    }
+    string getPosition() const override {
+        return "Developer";
+    }
+};
+
+int main() {
+    vector<Employee*> employees;
+
+    employees.push_back(new Manager());
+    employees.push_back(new Developer());
+    employees.push_back(new Developer());
+
+    cout << "Employee Salaries:" << endl;
+    cout << "------------------" << endl;
+
+    for (Employee* emp : employees) {
+        cout << emp->getPosition() << ": $" << emp->getSalary() << endl;
+    }
+
+    for (Employee* emp : employees) {
+        delete emp;
+    }
+    employees.clear();
+
+    return 0;
+}
