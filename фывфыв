@@ -1,0 +1,103 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Figure {
+protected:
+    double m_value1;
+    double m_value2;
+
+public:
+    virtual ~Figure() {}
+
+    void SetDimension(double v1, double v2 = 0) {
+        m_value1 = v1;
+        m_value2 = v2;
+    }
+
+    virtual void ShowLength() const = 0; 
+    virtual void Init() = 0;            
+    virtual void Print() const = 0;      
+    virtual double ShowArea() const = 0; 
+};
+
+
+class Circle : public Figure {
+public:
+    void Init() { cout << "Инициализация круга" << endl; }
+
+    void Print() const {
+        cout << "Фигура: Круг (Радиус: " << m_value1 << ")" << endl;
+    }
+
+    void ShowLength() const {
+        cout << "Длина окружности: " << 2 * 3.14 * m_value1 << endl;
+    }
+
+    double ShowArea() const {
+        return 3.14 * m_value1 * m_value1;
+    }
+};
+
+class Rectangle : public Figure {
+public:
+    void Init() { cout << "Инициализация прямоугольника" << endl; }
+
+    void Print() const {
+        cout << "Фигура: Прямоугольник (" << m_value1 << "x" << m_value2 << ")" << endl;
+    }
+
+    void ShowLength() const {
+        cout << "Периметр: " << 2 * (m_value1 + m_value2) << endl;
+    }
+
+    double ShowArea() const {
+        return m_value1 * m_value2;
+    }
+};
+
+class Triangle : public Figure {
+public:
+    void Init() { cout << "Инициализация треугольника" << endl; }
+
+    void Print() const {
+        cout << "Фигура: Треугольник (Основание: " << m_value1 << ", Высота: " << m_value2 << ")" << endl;
+    }
+
+    void ShowLength() const {
+        cout << "Длина сторон (условно): расчет сложнее..." << endl;
+    }
+
+    double ShowArea() const {
+        return 0.5 * m_value1 * m_value2;
+    }
+};
+
+int main() {
+    vector<Figure*> figures;
+
+    Circle* c = new Circle();
+    c->SetDimension(10); 
+
+    Rectangle* r = new Rectangle();
+    r->SetDimension(5, 10); 
+
+    Triangle* t = new Triangle();
+    t->SetDimension(6, 4); 
+
+    figures.push_back(c);
+    figures.push_back(r);
+    figures.push_back(t);
+
+    for (Figure* f : figures) {
+        f->Print();
+        cout << "Площадь: " << f->ShowArea() << endl;
+        f->ShowLength();
+        cout << "--------------------" << endl;
+    }
+
+    for (Figure* f : figures) delete f;
+
+    return 0;
+}
